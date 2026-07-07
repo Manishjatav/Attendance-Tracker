@@ -2,6 +2,7 @@ import { useState } from "react";
 import './Login.css'
 import { FaGraduationCap } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ export default function LoginPage() {
 
   const handleSubmit = async () => {
     if (!email || !password) {
-        return alert("Fill all fields");
+        toast.warning("Please fill all fields");
     }
 
     try {
@@ -31,11 +32,11 @@ export default function LoginPage() {
         if (data.success) {
             console.log(data);
             localStorage.setItem("token", data.token); 
-            alert("Login Succesful ✅")
+            toast.success("Login Succesful ✅")
             navigate(`/dashboard`);
         }
         if(!data.success){
-            alert(data.message);
+            toast.info(data.message);
         }
 
     } catch (error) {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner';
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ export default function RegisterPage() {
 
   const handleSubmit = async () => {
     if (!email || !password || !confirm || !name) {
-        return alert("Please Fill all fields");
+        return toast.warning("Please fill all fields");
     }
 
     try {
@@ -32,7 +33,8 @@ export default function RegisterPage() {
         const data = await response.text();
 
         console.log(data);
-        alert("User Created Successfully ✅");
+        if(data)
+          toast.success("Login Successful");
 
     } catch (error) {
         console.log(error);

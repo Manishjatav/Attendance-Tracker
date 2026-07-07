@@ -56,13 +56,17 @@ export default function Slider({open, setOpen}) {
               <CgProfile size={18}/>Your Profile
             </li>
 
-             <li className={btncss}>
+             <a className={btncss} href="https://docs.google.com/forms/d/e/1FAIpQLSe7rtV7kQxcV2pP9DhI4ktHkxa1SSGrNjla3sNCP4C9faTMmw/viewform"
+                target="_blank"
+                rel="noopener noreferrer" >
               <LuBug size={18}/>Report a bug
-            </li>
+            </a>
 
-            <li className={btncss}>
+            <a className={btncss}  href="https://docs.google.com/forms/d/e/1FAIpQLSe7rtV7kQxcV2pP9DhI4ktHkxa1SSGrNjla3sNCP4C9faTMmw/viewform"
+                target="_blank"
+                rel="noopener noreferrer" >
               <MdOutlineReviews  size={18}/>Suggestion
-            </li>
+            </a>
 
           
           </ul>

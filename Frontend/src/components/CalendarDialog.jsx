@@ -3,6 +3,7 @@ import { DayPicker } from "react-day-picker";
 import { Button } from "./ui/button";
 import "react-day-picker/dist/style.css";
 import "./Calendar.css";
+import { toast } from "sonner";
 
 import {
   Dialog,
@@ -37,9 +38,9 @@ const CalendarDialog = ({ open, setOpen, subject }) => {
         const data = await response.json();
 
         if (data.success) {
-        alert("Attendance Marked Successfully");
+        toast.success("Attendance Marked Successfully");
         } else {
-        alert(data.message);
+        toast.error(data.message);
         }
 
     } catch (error) {

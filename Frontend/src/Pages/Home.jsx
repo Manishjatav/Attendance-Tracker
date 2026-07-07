@@ -7,6 +7,7 @@ import Features from '@/components/Features';
 import { GiGraduateCap } from "react-icons/gi";
 import { NeonGradientCard } from '@/components/ui/neon-gradient-card';
 import Footer from '@/components/Footer';
+import { toast } from "sonner";
 
 const Home = () => {
 
@@ -98,9 +99,13 @@ const Home = () => {
         </div>
         </NeonGradientCard>
 
-
-        {/* <div className='m-4'>
+{/* 
+        <div className='m-4'>
             <NeonGradientCard className='h-140'>
+                 <span className="pointer-events-none z-10 h-full bg-linear-to-br from-[#1e00ff] from-35% to-[#76bfff] bg-clip-text text-center text-xl leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-5xl xl:text-5xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                    Attendance & CGPA tracker
+                </span>
+
             </NeonGradientCard>
         </div> */}
 

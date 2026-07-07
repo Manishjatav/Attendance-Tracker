@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 import {
   Dialog,
@@ -18,7 +19,7 @@ const DialogDemo = () => {
   const handleSubmit = async () => {
 
     if (!subjectName.trim()) {
-      return alert("Please enter subject name");
+      return toast.info("Welcome to AcadTrack");
     }
 
     try {
@@ -38,15 +39,15 @@ const DialogDemo = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Subject Added Successfully ✅");
+        toast.success("Login Successful");
         setSubjectName("");
       } else {
-        alert(data.message);
+       toast.info(data.message);
       }
 
     } catch (error) {
       console.log(error);
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     }
   };
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FaBook } from "react-icons/fa";
 import CalendarDialog from "@/components/CalendarDialog.jsx";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 export default function SubjectAttendance({btn}) {
 
@@ -27,7 +28,7 @@ export default function SubjectAttendance({btn}) {
       if (data.success) {
         setSubjects(data.subjects);
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
