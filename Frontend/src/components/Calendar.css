@@ -1,0 +1,79 @@
+/* Overall Calendar */
+.rdp {
+  --rdp-day-width: 40px;
+  --rdp-day-height: 40px;
+  --rdp-day_button-width: 40px;
+  --rdp-day_button-height: 40px;
+
+  font-size: 14px;
+}
+
+/* Month title */
+.rdp-month_caption {
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Weekdays */
+.rdp-weekday {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Date Button */
+.rdp-day_button {
+  width: 40px !important;
+  height: 40px !important;
+
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+
+  transition: 0.2s ease;
+}
+
+.rdp-day_button:hover {
+  background: #2563eb;
+  color: white;
+}
+
+/* Selected Date */
+.rdp-selected .rdp-day_button {
+  background: #2563eb;
+  color: white;
+}
+
+/* Today */
+.rdp-today .rdp-day_button {
+  border: 2px solid #2563eb;
+  color: #2563eb;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .rdp {
+    --rdp-day-width: 34px;
+    --rdp-day-height: 34px;
+    --rdp-day_button-width: 34px;
+    --rdp-day_button-height: 34px;
+
+    font-size: 12px;
+  }
+
+  .rdp-month_caption {
+    font-size: 16px;
+  }
+
+  .rdp-weekday {
+    font-size: 11px;
+  }
+
+  .rdp-day_button {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+}
