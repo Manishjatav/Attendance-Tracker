@@ -39,10 +39,10 @@ app.get("/api/dashboard/subjects", valid, getSubjects);
 app.post("/api/dashboard/attendance", valid, markAttendance);
 
 
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
 app.get("/*splat", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
 });
 
 
