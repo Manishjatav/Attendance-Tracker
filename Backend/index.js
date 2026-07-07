@@ -2,6 +2,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 app.use(express.json());
@@ -20,18 +22,28 @@ connectDB();
 
 //port
 const PORT = process.env.PORT || 4001;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 
 // adding routes
-app.post("/login",validateLogin,loginUser);
-app.post("/register",validateRegister, createAccount);
+app.post("/api/login", validateLogin, loginUser);
+app.post("/api/register", validateRegister, createAccount);
 
-app.get("/dashboard", valid, getDashboardData);
+app.get("/api/dashboard", valid, getDashboardData);
 
-app.post("/dashboard/add-subject", valid, addSubject);
-app.get("/dashboard/subjects", valid, getSubjects);
+app.post("/api/dashboard/add-subject", valid, addSubject);
+app.get("/api/dashboard/subjects", valid, getSubjects);
 
-app.post("/dashboard/attendance", valid, markAttendance);
+app.post("/api/dashboard/attendance", valid, markAttendance);
+
+
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.get("/*splat", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 
 app.listen(PORT, () => {

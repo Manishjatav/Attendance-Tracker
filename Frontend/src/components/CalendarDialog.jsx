@@ -21,7 +21,7 @@ const CalendarDialog = ({ open, setOpen, subject }) => {
 
         const token = localStorage.getItem("token");
 
-        const response = await fetch("http://localhost:4001/dashboard/attendance", {
+        const response = await fetch("/api/dashboard/attendance", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

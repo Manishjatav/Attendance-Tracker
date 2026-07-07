@@ -16,7 +16,7 @@ export default function RegisterPage() {
     }
 
     try {
-        const response = await fetch("http://localhost:4001/register", {
+        const response = await fetch("api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function RegisterPage() {
         const data = await response.text();
 
         console.log(data);
-        alert(data);
+        alert("User Created Successfully ✅");
 
     } catch (error) {
         console.log(error);

@@ -15,7 +15,6 @@ const DialogDemo = () => {
 
   const [subjectName, setSubjectName] = useState("");
 
-
   const handleSubmit = async () => {
 
     if (!subjectName.trim()) {
@@ -25,7 +24,7 @@ const DialogDemo = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:4001/dashboard/add-subject", {
+      const response = await fetch("/api/dashboard/add-subject", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

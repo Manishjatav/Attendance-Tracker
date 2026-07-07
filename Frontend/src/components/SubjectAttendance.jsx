@@ -15,7 +15,7 @@ export default function SubjectAttendance({btn}) {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:4001/dashboard/subjects", {
+      const response = await fetch("/api/dashboard/subjects", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
