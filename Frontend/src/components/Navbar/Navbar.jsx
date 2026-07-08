@@ -19,13 +19,10 @@ const Navbar = () => {
         
         {/* Left */}
         <div className="flex items-center gap-2">
-            <button onClick={toggleMenu} className='cursor-pointer'>
-              {/* <FiMenu size={24} /> */}
-            </button>
-            <p className='text-lg'>
-              AcadTrack
-            </p>
-            {/* <GiGraduateCap size={24}/> */}
+          
+             <span className="ml-2 pointer-events-none z-10 h-full bg-linear-to-br from-[#233ea8] from-35% to-[#03192b] bg-clip-text text-center text-xl leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-2xl xl:text-2xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                AcadTrack
+            </span>
 
         </div>
 
@@ -39,7 +36,7 @@ const Navbar = () => {
         {/* Mobile */}
         <button className="block md:hidden space-x-2">
           <Button variant="outline" className='px-3 py-4 text-base' onClick={() => navigate("/login")}>Login</Button>
-          <Button className='bg-blue-600 px-3 py-4 text-base' onClick={() => navigate("/register")}>Get Started</Button>
+          <Button className='bg-blue-600 px-3 py-4 text-base mr-1' onClick={() => navigate("/register")}>Get Started</Button>
         </button>
         
       </div>

@@ -13,6 +13,6 @@ const connectDB = async () => {
     } catch (error) {
         console.log("failed connection to db : ",error);
     }
-};c
+};
 
 export default connectDB;
