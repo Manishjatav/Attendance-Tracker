@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./Pages/Home";
@@ -9,9 +9,9 @@ import TodayAttendance from "./Pages/TodayAttendace";
 
 function App() {
   const token = localStorage.getItem("token");
-  
+
   return (
-     <div className="min-h-screen bg-gradient-to-b from-[#f2f0ff] to-white font-normal tracking-tight">
+    <div className="min-h-screen bg-gradient-to-b from-[#f2f0ff] to-white font-normal tracking-tight">
       <Routes>
         <Route
           path="/"
