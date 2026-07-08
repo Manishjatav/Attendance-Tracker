@@ -41,8 +41,11 @@ export default function SimpleDropdown() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
 
-          <DropdownMenuItem onClick={() => navigate("/dashboard/profile")}>
+          <DropdownMenuItem onClick={() => navigate("/dashboard")}>
             Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <a href="mailto:manishjatav041@gmail.com">Help</a>
           </DropdownMenuItem>
         </DropdownMenuGroup>
 

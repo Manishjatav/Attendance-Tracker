@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-    {open && <Slider open={open} setOpen={setOpen}/>}
+    {/* {open && <Slider open={open} setOpen={setOpen}/>} */}
     <nav className="border-b bg-white  font-bold tracking-tight">
       
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-2">
@@ -26,7 +26,7 @@ const Navbar = () => {
         {/* Left */}
         <div className="flex items-center gap-2">
             <button onClick={toggleMenu} className='cursor-pointer'>
-              <FiMenu size={24} />
+              {/* <FiMenu size={24} /> */}
             </button>
             <p className='text-lg'>
               AcadTrack

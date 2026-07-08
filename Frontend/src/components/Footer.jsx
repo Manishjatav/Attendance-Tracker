@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-        <footer className="mt-24 z-[999] border-t border-slate-200 bg-white">
+        <footer className="mt-24 z-[999] border-t border-slate-200 bg-white z-[999]">
             <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-center md:flex-row">
                 
                 <div>
@@ -24,6 +24,10 @@ const Footer = () => {
                 </a>
                 <a href="/login" className="transition hover:text-blue-600">
                     Login
+                </a>
+
+                 <a href="mailto:manishjatav041@gmail.com" className="transition hover:text-blue-600">
+                    Contact Us
                 </a>
                 </div>
             </div>
