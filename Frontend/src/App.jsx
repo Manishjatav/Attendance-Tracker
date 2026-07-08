@@ -8,6 +8,8 @@ import Dashbaord from "./Pages/Dashbaord";
 import TodayAttendance from "./Pages/TodayAttendace";
 
 function App() {
+  const token = localStorage.getItem("token");
+  
   return (
      <div className="min-h-screen bg-gradient-to-b from-[#f2f0ff] to-white font-normal tracking-tight">
       <Routes>
