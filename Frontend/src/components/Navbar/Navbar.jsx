@@ -8,13 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-
-  function toggleMenu(){
-    setOpen((prev) => !prev);
-  }
-
 
   return (
     <>
