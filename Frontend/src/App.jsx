@@ -1,5 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Dashbaord from "./Pages/Dashbaord";
+import TodayAttendance from "./Pages/TodayAttendace";
+
 function App() {
   const token = localStorage.getItem("token");
 

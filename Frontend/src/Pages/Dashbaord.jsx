@@ -51,7 +51,7 @@ const Dashbaord = () => {
                   </h3>
 
                   <h1 className="mt-1 text-2xl font-bold text-blue-600">
-                    NaN
+                    9.8
                   </h1>
 
                   <p className="mt-1 text-xs text-slate-500">

@@ -92,7 +92,7 @@ export const validateRegister = (req, res, next) => {
         return res.status(400).send("All fields are required");
     }
 
-    if (password.length < 6) {
+    if (password.length < 5) {
         return res.status(400).send("Password must be at least 6 characters");
     }
     

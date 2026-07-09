@@ -13,31 +13,37 @@ export default function RegisterPage() {
 
   const handleSubmit = async () => {
     if (!email || !password || !confirm || !name) {
-        return toast.warning("Please fill all fields");
+      return toast.warning("Please fill all fields");
+    }
+
+    if (password !== confirm) {
+      return toast.error("Passwords do not match");
     }
 
     try {
-        const response = await fetch("api/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email,
-                password,
-                name, 
-                confirm,
-            }),
-        });
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          confirm,
+          name,
+        }),
+      });
 
-        const data = await response.text();
+      const data = await response.json();
 
-        console.log(data);
-        if(data)
-          toast.success("Login Successful");
-
+      if (response.ok) {
+        toast.success(data.message || "Account Created Successfully");
+      } else {
+        toast.error(data.message || "Registration Failed");
+      }
     } catch (error) {
-        console.log(error);
+      console.error(error);
+      toast.error("Something went wrong");
     }
   };
 
