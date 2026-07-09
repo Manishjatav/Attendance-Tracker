@@ -42,13 +42,19 @@ app.post("/api/dashboard/attendance", valid, markAttendance);
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
 // ping req handle
-app.get('/api/health', (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     status: 'OK',
     message: 'Your API is running',
     timestamp: new Date().toISOString()
   });
 });
+
+// for dev test
+app.get("/developer", (req, res) => {
+  res.send("Ya this route is working fine Jai shree ram");
+  console.log("only for dev");
+}
 
 app.get("/*splat", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
