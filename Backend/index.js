@@ -54,7 +54,7 @@ app.get("/api/health", (req, res) => {
 app.get("/developer", (req, res) => {
   res.send("Ya this route is working fine Jai shree ram");
   console.log("only for dev");
-}
+});
 
 app.get("/*splat", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
