@@ -45,6 +45,14 @@ app.get("/*splat", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
 });
 
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Your API is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server Srm app listening on port ${PORT}`)
