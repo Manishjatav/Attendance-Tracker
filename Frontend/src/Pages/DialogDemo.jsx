@@ -19,7 +19,7 @@ const DialogDemo = () => {
   const handleSubmit = async () => {
 
     if (!subjectName.trim()) {
-      return toast.info("Welcome to AcadTrack");
+      return toast.warning("Please enter subject name");
     }
 
     try {
@@ -39,7 +39,7 @@ const DialogDemo = () => {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Login Successful");
+        toast.success("Subject Added Successfully");
         setSubjectName("");
       } else {
        toast.info(data.message);
@@ -82,8 +82,8 @@ const DialogDemo = () => {
         <DialogFooter className="flex">
           
           <Button
-            onClick={() => {
-              handleSubmit();
+            onClick={async () => {
+              await handleSubmit();
               window.location.reload();
             }}
             className="w-full rounded-xl bg-blue-500"
