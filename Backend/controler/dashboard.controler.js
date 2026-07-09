@@ -176,7 +176,6 @@ export const getSubjects = async (req, res) => {
 
 export const markAttendance = async (req, res) => {
   try {
-
     const { subjectId, date, status } = req.body;
 
     // Validation
@@ -187,7 +186,7 @@ export const markAttendance = async (req, res) => {
       });
     }
 
-    // Find Attendance Document
+    // Attendance Document
     const attendanceDoc = await Attendance.findOne({ subjectId });
 
     if (!attendanceDoc) {
@@ -197,59 +196,87 @@ export const markAttendance = async (req, res) => {
       });
     }
 
-    // Duplicate Date Check
-    const alreadyMarked = attendanceDoc.records.find(
+    // Subject Document
+    const subjectCollection = await Subject.findOne({
+      "subjects._id": subjectId,
+    });
+
+    if (!subjectCollection) {
+      return res.status(404).json({
+        success: false,
+        message: "Subject not found",
+      });
+    }
+
+    const subject = subjectCollection.subjects.id(subjectId);
+
+    // Check if attendance already exists for same date
+    const existingRecord = attendanceDoc.records.find(
       (record) =>
         new Date(record.date).toDateString() ===
         new Date(date).toDateString()
     );
 
-    if (alreadyMarked) {
-      return res.status(400).json({
-        success: false,
-        message: "Attendance already marked for this date",
-      });
-    }
+    if (existingRecord) {
+      // Same status -> nothing to update
+      if (existingRecord.status === status) {
+        return res.status(200).json({
+          success: true,
+          message: "Attendance already up to date",
+        });
+      }
 
-    // Save Attendance
-    attendanceDoc.records.push({
-      date,
-      status,
-    });
+      // Remove old count
+      if (existingRecord.status === "present") {
+        subject.presentCount -= 1;
+      } else {
+        subject.absentCount -= 1;
+      }
 
-    await attendanceDoc.save();
-
-    // Update Subject Counts
-    const subjectCollection = await Subject.findOne({
-      "subjects._id": subjectId,
-    });
-
-    if (subjectCollection) {
-
-      const subject = subjectCollection.subjects.id(subjectId);
-
+      // Add new count
       if (status === "present") {
         subject.presentCount += 1;
       } else {
         subject.absentCount += 1;
       }
 
+      // Update status
+      existingRecord.status = status;
+
+      await attendanceDoc.save();
       await subjectCollection.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Attendance updated successfully",
+      });
     }
+
+    // New attendance
+    attendanceDoc.records.push({
+      date,
+      status,
+    });
+
+    if (status === "present") {
+      subject.presentCount += 1;
+    } else {
+      subject.absentCount += 1;
+    }
+
+    await attendanceDoc.save();
+    await subjectCollection.save();
 
     return res.status(200).json({
       success: true,
       message: "Attendance marked successfully",
     });
-
   } catch (error) {
-
     console.log(error);
 
     return res.status(500).json({
       success: false,
       message: "Something went wrong",
     });
-
   }
 };
