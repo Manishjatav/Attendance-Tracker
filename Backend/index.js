@@ -41,16 +41,17 @@ app.post("/api/dashboard/attendance", valid, markAttendance);
 
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-app.get("/*splat", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
-});
-
+// ping req handle
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
     message: 'Your API is running',
     timestamp: new Date().toISOString()
   });
+});
+
+app.get("/*splat", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
 });
 
 
