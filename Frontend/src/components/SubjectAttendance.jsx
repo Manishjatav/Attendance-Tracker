@@ -135,14 +135,14 @@ export default function SubjectAttendance({btn}) {
                       >
                         {attendance}%
                       </span>
-                      
+
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDelete(subject._id);
                         }}
                       >
-                        <FaTrash className="text-red-500" />
+                        <FaTrash className="text-red-500 ml-3" />
                       </button>
 
                       {btn && <Button>Mark</Button>}
