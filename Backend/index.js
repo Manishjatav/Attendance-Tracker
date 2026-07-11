@@ -39,7 +39,7 @@ app.get("/api/dashboard/subjects", valid, getSubjects);
 app.post("/api/dashboard/attendance", valid, markAttendance);
 
 
-app.delete("/subjects/:subjectId", valid, deleteSubject);
+app.delete("/api/dashboard/subjects/:subjectId", valid, deleteSubject);
 
 
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
