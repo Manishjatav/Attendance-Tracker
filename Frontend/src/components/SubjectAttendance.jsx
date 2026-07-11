@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaBook } from "react-icons/fa";
+import { FaBook, FaEdit, FaTrash } from "react-icons/fa";
 import CalendarDialog from "@/components/CalendarDialog.jsx";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
@@ -16,7 +16,7 @@ export default function SubjectAttendance({btn}) {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("/api/dashboard/subjects", {
+      const response = await fetch("https://attendance-tracker-ydnp.onrender.com/api/dashboard/subjects", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,6 +34,47 @@ export default function SubjectAttendance({btn}) {
       console.log(error);
     }
   };
+
+
+
+  const handleDelete = async (subjectId) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this subject?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      `https://attendance-tracker-ydnp.onrender.com/api/dashboard/subjects/${subjectId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      toast.success(data.message);
+
+      // Refresh subjects
+      fetchSubjects();
+    } else {
+      toast.error(data.message);
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error("Something went wrong");
+  }
+};
+
+
+
 
   useEffect(() => {
     fetchSubjects();
@@ -74,6 +115,7 @@ export default function SubjectAttendance({btn}) {
                 }}
                 className="flex w-full items-center gap-3 rounded-xl bg-blue-50 p-3 transition hover:bg-blue-100 cursor-pointer"
               >
+
                 <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100">
                   <FaBook className="text-lg text-blue-600" />
                 </div>
@@ -86,15 +128,29 @@ export default function SubjectAttendance({btn}) {
                       {subject.name}
                     </h3>
 
-                    <span
-                      className={`rounded-lg px-3 py-1 text-xs font-semibold ${badge}`}
-                    >
-                      {attendance}%
-                    </span>
-                  {btn && <Button>Mark</Button>}
+                    <div className="flex items-center gap-2">
 
+                      <span
+                        className={`rounded-lg px-3 py-1 text-xs font-semibold ${badge}`}
+                      >
+                        {attendance}%
+                      </span>
+                      
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(subject._id);
+                        }}
+                      >
+                        <FaTrash className="text-red-500" />
+                      </button>
+
+                      {btn && <Button>Mark</Button>}
+
+                    </div>
 
                   </div>
+
 
                   <div className="h-1 overflow-hidden rounded-full bg-slate-200">
                     <div
@@ -104,6 +160,7 @@ export default function SubjectAttendance({btn}) {
                   </div>
 
                 </div>
+
 
               </button>
             );
