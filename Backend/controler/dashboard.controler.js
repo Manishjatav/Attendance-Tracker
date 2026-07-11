@@ -173,7 +173,6 @@ export const getSubjects = async (req, res) => {
 
 
 // markAttendace
-
 export const markAttendance = async (req, res) => {
   try {
     const { subjectId, date, status } = req.body;
@@ -271,6 +270,134 @@ export const markAttendance = async (req, res) => {
       success: true,
       message: "Attendance marked successfully",
     });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+};
+
+
+
+// update subject
+export const updateSubject = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { subjectId } = req.params;
+    const { subjectName } = req.body;
+
+    if (!subjectName || !subjectName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Subject name is required",
+      });
+    }
+
+    // Find User
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // Find Subject Document
+    const subjectDoc = await Subject.findById(user.subjectCollectionId);
+
+    if (!subjectDoc) {
+      return res.status(404).json({
+        success: false,
+        message: "Subject collection not found",
+      });
+    }
+
+    // Find Subject
+    const subject = subjectDoc.subjects.id(subjectId);
+
+    if (!subject) {
+      return res.status(404).json({
+        success: false,
+        message: "Subject not found",
+      });
+    }
+
+    subject.name = subjectName.trim();
+
+    await subjectDoc.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Subject updated successfully",
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+};
+
+
+
+
+export const deleteSubject = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { subjectId } = req.params;
+
+    // Find User
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // Find Subject Collection
+    const subjectDoc = await Subject.findById(user.subjectCollectionId);
+
+    if (!subjectDoc) {
+      return res.status(404).json({
+        success: false,
+        message: "Subject collection not found",
+      });
+    }
+
+    // Check Subject Exists
+    const subject = subjectDoc.subjects.id(subjectId);
+
+    if (!subject) {
+      return res.status(404).json({
+        success: false,
+        message: "Subject not found",
+      });
+    }
+
+    // Delete Attendance
+    await Attendance.findOneAndDelete({
+      subjectId,
+    });
+
+    // Delete Subject
+    subjectDoc.subjects.pull(subjectId);
+
+    await subjectDoc.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Subject deleted successfully",
+    });
+
   } catch (error) {
     console.log(error);
 
