@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 import { createAccount, loginUser, validateLogin, validateRegister} from "./controler/user.controler.js";
-import { valid, getDashboardData, addSubject, getSubjects , markAttendance} from "./controler/dashboard.controler.js"
+import { valid, getDashboardData, addSubject, getSubjects , markAttendance, deleteSubject} from "./controler/dashboard.controler.js"
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -39,6 +39,9 @@ app.get("/api/dashboard/subjects", valid, getSubjects);
 app.post("/api/dashboard/attendance", valid, markAttendance);
 
 
+app.delete("/subjects/:subjectId", valid, deleteSubject);
+
+
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
 // ping req handle
@@ -55,6 +58,8 @@ app.get("/developer", (req, res) => {
   res.send("Ya this route is working fine Jai shree ram");
   console.log("only for dev");
 });
+
+
 
 app.get("/*splat", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
