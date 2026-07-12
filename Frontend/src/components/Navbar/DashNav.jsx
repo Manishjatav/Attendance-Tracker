@@ -25,16 +25,17 @@ export default function DashNav(){
 
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-2">
 
-        {/* Left */}
+       {/* Left */}
         <div className='flex justify-between'>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 items-center">
             <button onClick={toggleMenu} className='cursor-pointer'>
               <FiMenu size={24} />
             </button>
-            <p className='text-lg'>
-              AcadTrack
-            </p>
+            
+            <span className="ml-2 pointer-events-none z-10 h-full bg-linear-to-br from-[#233ea8] from-35% to-[#03192b] bg-clip-text text-center text-xl leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-2xl xl:text-2xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                AcadTrack
+            </span>
             {/* <GiGraduateCap size={24}/> */}
 
           </div>
