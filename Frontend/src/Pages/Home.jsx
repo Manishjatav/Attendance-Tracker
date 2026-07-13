@@ -99,7 +99,6 @@ const Home = () => {
         </NeonGradientCard>
 
         <Footer/>
-
         
     </div>
   )

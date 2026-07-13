@@ -21,7 +21,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("https://attendance-tracker-ydnp.onrender.com/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

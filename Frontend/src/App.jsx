@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Dashbaord from "./Pages/Dashbaord";
 import TodayAttendance from "./Pages/TodayAttendace";
+import Cgpa from "./Pages/Cgpa"
 
 function App() {
   const token = localStorage.getItem("token");
@@ -25,9 +26,11 @@ function App() {
           path="/dashboard/today-attendance"
           element={<TodayAttendance />}
         />
+        <Route path="/dashboard/cgpa" element={<Cgpa />} />
+        
       </Routes>
     </div>
   );
 }
 
-export default App;
+export default App; 

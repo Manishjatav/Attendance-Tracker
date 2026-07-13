@@ -6,7 +6,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdAutoGraph } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight, FaGraduationCap } from "react-icons/fa6";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { CgProfile } from "react-icons/cg";
@@ -33,8 +33,10 @@ export default function Slider({open, setOpen}) {
 
     return (
       <div className="fixed top-0 left-0 z-[9999] w-64 h-screen bg-gray-800 text-white p-5 rounded-tr-xl rounded-br-xl">
-          <h1 className="flex gap-40 text-2xl font-bold mb-8">
-            <FaUserGraduate className="ml-2"/>
+          <h1 className="flex gap-35 text-2xl font-bold mb-8 items-center">
+            <div className="w-12 h-12 bg-blue-500 flex items-center justify-center rounded-xl">
+              <FaGraduationCap/>
+            </div>
             <RxCross1 className="cursor-pointer" onClick={handleSlider}/>
           </h1>
 
@@ -48,7 +50,7 @@ export default function Slider({open, setOpen}) {
               <IoMdCheckmarkCircleOutline size={18}/>Today Attendance
             </li>
 
-            <li className={btncss} onClick={() => navigate('/dashboard')}>
+            <li className={btncss} onClick={() => navigate('/dashboard/cgpa')}>
               <MdAutoGraph size={18}/>CGPA
             </li>
 
