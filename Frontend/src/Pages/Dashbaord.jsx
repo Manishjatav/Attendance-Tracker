@@ -64,8 +64,6 @@ const Dashbaord = () => {
           </div>
 
         </div>
-
-    </div>
   )
 }
 
