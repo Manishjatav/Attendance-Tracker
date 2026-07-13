@@ -48,7 +48,7 @@ export default function SubjectAttendance({btn}) {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `https://attendance-tracker-ydnp.onrender.com/api/dashboard/subjects/${subjectId}`,
+      `https://attendance-tracker-ydnp.onrender.com/dashboard/subjects/${subjectId}`,
       {
         method: "DELETE",
         headers: {
