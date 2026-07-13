@@ -43,21 +43,18 @@ const Dashbaord = () => {
                 </div>
               </div>
 
-              {/* CGPA Card */}
-              <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <Button className="text-sm font-medium bg-green-500" onClick={() => navigate('/dashboard/cgpa')}>
+               {/* CGPA Card */}
+              <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                   
+                  <Button className="text-sm font-medium bg-green-500" onClick={() => navigate('/dashboard/cgpa')}>
                     Track CGPA<MdArrowOutward size={30} />
                   </Button>
 
                    <Button className="text-sm font-medium bg-blue-500" onClick={() => navigate('/dashboard/today-attendance')}>
                     Today Attendance<MdArrowOutward size={30} />
                   </Button>
-                </div>
 
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-indigo-50">
-                  {/* Icon */}
-                  <PiGraduationCapLight size={30} className='text-violet-700'/>
-                </div>
+
               </div>
 
               <DialogDemo/>
