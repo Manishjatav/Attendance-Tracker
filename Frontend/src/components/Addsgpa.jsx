@@ -35,7 +35,7 @@ const Addsgpa = ({semNo = 1}) => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "/dashboard/add-semester",
+        "https://attendance-tracker-ydnp.onrender.com/api/dashboard/add-semester",
         {
           method: "POST",
           headers: {
@@ -72,64 +72,66 @@ const Addsgpa = ({semNo = 1}) => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="rounded-xl bg-blue-600 hover:bg-blue-700">
-          + Add Semester
-        </Button>
-      </DialogTrigger>
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button className="rounded-xl bg-blue-600 text-sm hover:bg-blue-700">
+        + Add Semester
+      </Button>
+    </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md rounded-3xl p-6">
-        <DialogHeader>
-          <DialogTitle className="text-center text-2xl font-bold">
-            Add Semester
-          </DialogTitle>
-        </DialogHeader>
+    <DialogContent className="sm:max-w-md rounded-3xl p-6">
+      <DialogHeader>
+        <DialogTitle className="text-center text-xl font-bold">
+          Add Semester
+        </DialogTitle>
+      </DialogHeader>
 
-        <div className="mt-4 space-y-4">
-          <div>
-            <label className="mb-2 block font-medium">
-              Semester
-            </label>
+      <div className="mt-4 space-y-4">
+        <div>
+          <label className="mb-2 block text-sm font-medium">
+            Semester
+          </label>
 
-            <Input
-              type="number"
-              min="1"
-              placeholder="e.g. 4"
-              value={semester}
-              onChange={(e) => setSemester(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block font-medium">
-              SGPA
-            </label>
-
-            <Input
-              type="number"
-              min="1"
-              max="10"
-              step="0.01"
-              placeholder="e.g. 8.45"
-              value={sgpa}
-              onChange={(e) => setSgpa(e.target.value)}
-            />
-          </div>
+          <Input
+            type="number"
+            min="1"
+            placeholder="e.g. 4"
+            value={semester}
+            onChange={(e) => setSemester(e.target.value)}
+            className="text-sm"
+          />
         </div>
 
-        <DialogFooter className="mt-6">
-          <Button
-            onClick={addSemester}
-            disabled={loading}
-            className="w-full rounded-xl bg-blue-600 hover:bg-blue-700"
-          >
-            {loading ? "Adding..." : "Submit"}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+        <div>
+          <label className="mb-2 block text-sm font-medium">
+            SGPA
+          </label>
+
+          <Input
+            type="number"
+            min="1"
+            max="10"
+            step="0.01"
+            placeholder="e.g. 8.45"
+            value={sgpa}
+            onChange={(e) => setSgpa(e.target.value)}
+            className="text-sm"
+          />
+        </div>
+      </div>
+
+      <DialogFooter className="mt-6">
+        <Button
+          onClick={addSemester}
+          disabled={loading}
+          className="w-full rounded-xl bg-blue-600 text-sm hover:bg-blue-700"
+        >
+          {loading ? "Adding..." : "Submit"}
+        </Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+);
 };
 
 export default Addsgpa;
