@@ -39,7 +39,7 @@ app.get("/api/dashboard/subjects", valid, getSubjects);
 app.post("/api/dashboard/attendance", valid, markAttendance);
 
 
-app.delete("/subjects/:subjectId", valid, deleteSubject);
+app.delete("/api/dashboard/subjects/:subjectId", valid, deleteSubject);
 
 // CGPA
 app.post("/api/dashboard/add-semester", valid, addSemester);
