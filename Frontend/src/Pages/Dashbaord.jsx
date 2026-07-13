@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import CalendarDialog from '@/components/CalendarDialog.jsx';
 import { FaS } from 'react-icons/fa6';
+import { Button } from '@/components/ui/button.jsx';
 
 const Dashbaord = () => {
   const [open, setOpen] = useState(false);
