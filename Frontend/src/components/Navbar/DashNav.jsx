@@ -33,9 +33,9 @@ export default function DashNav(){
               <FiMenu size={24}/>
             </button>
             
-            <span className="pointer-events-none z-10 h-full bg-linear-to-br from-[#233ea8] from-35% to-[#03192b] bg-clip-text text-center text-lg leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-2xl xl:text-2xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
-                AcadTrack
-            </span>
+           <p className='text-lg'>
+              AcadTrack
+            </p>
             {/* <GiGraduateCap size={24}/> */}
 
           </div>
