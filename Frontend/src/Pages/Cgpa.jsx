@@ -20,7 +20,7 @@ export default function Cgpa() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:4001/api/dashboard/cgpa",
+        "/api/dashboard/cgpa",
         {
           method: "GET",
           headers: {
@@ -77,8 +77,7 @@ export default function Cgpa() {
     try {
       const token = localStorage.getItem("token");
       
-      const response = await fetch(
-        `http://localhost:4001/api/dashboard/delete-semester/${semesterId}`,
+      const response = await fetch(`/dashboard/delete-semester/${semesterId}`,
         {
           method: "DELETE",
           headers: {

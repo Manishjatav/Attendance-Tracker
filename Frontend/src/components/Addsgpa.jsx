@@ -35,7 +35,7 @@ const Addsgpa = ({semNo = 1}) => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:4001/api/dashboard/add-semester",
+        "/dashboard/add-semester",
         {
           method: "POST",
           headers: {
