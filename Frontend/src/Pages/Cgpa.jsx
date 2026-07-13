@@ -77,7 +77,7 @@ export default function Cgpa() {
     try {
       const token = localStorage.getItem("token");
       
-      const response = await fetch(`/dashboard/delete-semester/${semesterId}`,
+      const response = await fetch(`https://attendance-tracker-ydnp.onrender.com/api/dashboard/delete-semester/${semesterId}`,
         {
           method: "DELETE",
           headers: {
