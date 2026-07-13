@@ -20,7 +20,7 @@ export default function Cgpa() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "/api/dashboard/cgpa",
+        "https://attendance-tracker-ydnp.onrender.com/api/dashboard/cgpa",
         {
           method: "GET",
           headers: {
