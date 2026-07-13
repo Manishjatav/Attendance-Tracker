@@ -28,7 +28,7 @@ const Dashbaord = () => {
         {/*containers  */}
         <div className='flex justify-center md:justify-center'>
 
-          <div className="flex flex-col w-[92vw] md:w-[70vw] gap-4 mb-6">
+          <div className="flex flex-col w-[90vw] md:w-[70vw] gap-4 mb-6">
 
               {/* Welcome Card */}
               <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">

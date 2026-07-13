@@ -117,8 +117,8 @@ export default function Cgpa() {
                     className="flex items-center justify-between p-6 cursor-pointer"
                   >
                     <div className="flex items-center gap-5">
-                      <div className="h-13 w-13 rounded-2xl bg-blue-100 flex items-center justify-center">
-                        <GraduationCap className="text-blue-600" size={30} />
+                      <div className="h-8 w-8 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <GraduationCap className="text-blue-600" size={18} />
                       </div>
 
                       <div>
@@ -131,11 +131,11 @@ export default function Cgpa() {
                     </div>
 
                     <div
-                      className={`h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center transition duration-300 ${
+                      className={`h-8 w-8 rounded-xl bg-blue-100 flex items-center justify-center transition duration-300 ${
                         open ? "rotate-180" : ""
                       }`}
                     >
-                      <ChevronDown className="text-indigo-600" />
+                      <ChevronDown className="text-blue-600" size={18} />
                     </div>
                   </div>
 
